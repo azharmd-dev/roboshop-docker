@@ -12,4 +12,4 @@ ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/users"
 RUN chown -R roboshop:roboshop /opt/server
 USER roboshop  
-CMD [ "node" , "server.js"]
+CMD [ "node", "server.js" ]
