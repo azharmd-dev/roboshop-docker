@@ -7,8 +7,8 @@ RUN pip3 install -r requirements.txt
 
 FROM python:3.9
 WORKDIR /opt/server
+COPY --from=build /opt/server /opt/server
 RUN addgroup --system roboshop && adduser --system --ingroup roboshop roboshop
-RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 ENV CART_HOST="cart" \
     CART_PORT="8080" \
     USER_HOST="user" \
