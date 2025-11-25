@@ -7,19 +7,17 @@ COPY payment.ini .
 COPY *.py .
 
 # ---------- Runtime ----------
-FROM python:3.9-slim
+FROM python:3.9-slim-bookworm
 EXPOSE 8080
 WORKDIR /opt/server
 
-# Install shared libs for uwsgi
 RUN apt-get update && apt-get install -y \
     libxml2 \
     libxslt1.1 \
-    libpcre2-8 \
+    libpcre3 \
     libssl3 \
     && apt-get clean
 
-# Create non-root user
 RUN groupadd -r roboshop && \
     useradd -r -g roboshop roboshop && \
     chown -R roboshop:roboshop /opt/server
@@ -29,7 +27,6 @@ COPY --from=build /opt/server /opt/server
 
 ENV PATH="/root/.local/bin:${PATH}"
 
-# App env
 ENV CART_HOST="cart" \
     CART_PORT="8080" \
     USER_HOST="user" \
