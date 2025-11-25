@@ -10,8 +10,8 @@ RUN pip3 install -r requirements.txt
 FROM python:3.9-slim
 EXPOSE 8080
 WORKDIR /opt/server
-RUN addgroup -S roboshop && \ 
-    adduser -S roboshop -G roboshop && \
+RUN groupadd -r roboshop && \
+    useradd -r -g roboshop roboshop && \
     chown -R roboshop:roboshop /opt/server
 ENV CART_HOST="cart" \
     CART_PORT="8080" \
