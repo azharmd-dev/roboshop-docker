@@ -16,7 +16,7 @@ services:
       - rabbitmq:/var/lib/rabbitmq
   redis:
     build: ./redis
-    image: redis:v1
+    image: redis:v1f
     container_name: redis
     volumes:
       - redis:/data
