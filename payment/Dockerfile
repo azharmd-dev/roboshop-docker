@@ -15,7 +15,7 @@ WORKDIR /opt/server
 RUN apt-get update && apt-get install -y \
     libxml2 \
     libxslt1.1 \
-    libpcre3 \
+    libpcre2-8 \
     libssl3 \
     && apt-get clean
 
